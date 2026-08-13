@@ -61,6 +61,7 @@ SELECT
     pr.from_node,
     pr.to_node,
     pr.distance_m,
+    round(st_length(a.geom::geography))::smallint AS network_distance_m,
     a.geom
 FROM pairs AS pr
 JOIN sources AS s ON pr.from_node = s.from_node
