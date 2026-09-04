@@ -2,7 +2,7 @@
 This is a placeholder since we don't really know the eventual table structure
 */
 
-CREATE TABLE labs.service_requests (
+CREATE TABLE labs.work_orders (
     wonum integer PRIMARY KEY,
     description text,
     location text,
