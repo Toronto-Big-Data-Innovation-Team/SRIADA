@@ -1,9 +1,10 @@
 /*
-This is a placeholder since we don't really know the eventual table structure
+Table for uploaded work order data
 */
 
 CREATE TABLE labs.work_orders (
-    wonum integer PRIMARY KEY,
+    upload_uid smallint NOT NULL REFERENCES labs.work_order_uploads (uid),
+    wonum integer NOT NULL,
     description text,
     location text,
     failurecode text,
@@ -18,8 +19,10 @@ CREATE TABLE labs.work_orders (
     siteid text,
     statusdate text,
     assignedownergroup text,
-    latitudey numeric,
-    longitudex numeric,
+    latitudey numeric NOT NULL,
+    longitudex numeric NOT NULL,
     cotward text,
-    geom geometry(Point,4326)
+    PRIMARY KEY (upload_uid, wonum)
 );
+
+ALTER TABLE labs.work_orders OWNER TO flashcrow;
