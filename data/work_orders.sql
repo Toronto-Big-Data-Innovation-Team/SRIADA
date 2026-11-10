@@ -3,7 +3,7 @@ Table for uploaded work order data
 */
 
 CREATE TABLE labs.work_orders (
-    upload_uid smallint NOT NULL REFERENCES labs.work_order_uploads (uid),
+    upload_uid smallint NOT NULL REFERENCES labs.work_order_uploads (uid) ON DELETE CASCADE,
     wonum integer NOT NULL,
     description text,
     location text,
