@@ -3,6 +3,9 @@ Track when data was uploaded by supervisors
 
 This will let us isolate data per upload and
 also clean up stale data as necessary.
+
+DELETing with CASCADE from this table will be
+the tidiest way to clean things up. 
 */
 
 CREATE TABLE labs.work_order_uploads (

@@ -1,3 +1,9 @@
+/*
+Reprojects uploaded work order data on the fly.
+When the client is fetching work order data from the
+server it should always come through this view.
+*/
+
 CREATE OR REPLACE VIEW labs.work_orders_projected AS
 
 SELECT

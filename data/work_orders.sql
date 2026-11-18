@@ -1,5 +1,7 @@
 /*
 Table for uploaded work order data
+Because the same data could be uploaded multiple
+times, these are provided with a new uid as PK.
 */
 
 CREATE TABLE labs.work_orders (

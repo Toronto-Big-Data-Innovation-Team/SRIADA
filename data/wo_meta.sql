@@ -1,5 +1,12 @@
 /*
 Stores work-order-level attributes specific to batches
+
+Due to historical changes, there are two ways this is accessed
+- First, it references work orders by a uid that is distinct within uploads
+  This allows for a cascading delete if uploads are deleted
+- Second, it references wonums within batches. Wonums will be distinct within
+  batches, because batches are unique to uploads. The client is naive of 
+  what here is being called work_order_uid so it references in this second way
 */
 
 CREATE TABLE labs.wo_meta (
