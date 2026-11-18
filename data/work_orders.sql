@@ -1,9 +1,13 @@
 /*
-This is a placeholder since we don't really know the eventual table structure
+Table for uploaded work order data
+Because the same data could be uploaded multiple
+times, these are provided with a new uid as PK.
 */
 
 CREATE TABLE labs.work_orders (
-    wonum integer PRIMARY KEY,
+    uid serial PRIMARY KEY,
+    upload_uid smallint NOT NULL REFERENCES labs.work_order_uploads (uid) ON DELETE CASCADE,
+    wonum integer NOT NULL,
     description text,
     location text,
     failurecode text,
@@ -18,8 +22,11 @@ CREATE TABLE labs.work_orders (
     siteid text,
     statusdate text,
     assignedownergroup text,
-    latitudey numeric,
-    longitudex numeric,
-    cotward text,
-    geom geometry(Point,4326)
+    latitudey numeric NOT NULL,
+    longitudex numeric NOT NULL,
+    cotward text
 );
+
+CREATE UNIQUE INDEX ON labs.work_orders (upload_uid, wonum);
+
+ALTER TABLE labs.work_orders OWNER TO flashcrow;
